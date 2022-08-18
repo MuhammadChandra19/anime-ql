@@ -1,0 +1,49 @@
+{
+  "name": "randomuser",
+  "homepage": "https://MuhammadChandra19.github.io/animeql/",
+  "version": "1.0.0",
+  "main": "src/index.tsx",
+  "repository": "git@github.com:MuhammadChandra19/animeql.git",
+  "author": "muhammad chandra zulfikar <muhammadchandrazulfikar@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --env",
+    "start": "webpack serve --config webpack.config.js --env env=development",
+    "build": "webpack --config webpack.config.js --env env=production",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@types/lodash": "^4.14.182",
+    "gh-pages": "^4.0.0",
+    "jest": "^26.6.3",
+    "lodash": "^4.17.21",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "ts-jest": "^26.5.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.10",
+    "@babel/plugin-transform-runtime": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "@babel/runtime": "^7.17.9",
+    "@types/jest": "^26.0.22",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "@types/testing-library__jest-dom": "^5.9.5",
+    "@types/testing-library__react": "^10.2.0",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.1",
+    "typescript": "^4.6.4",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
+  }
+}
