@@ -5,7 +5,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import MainLayout from './Layout/MainLayout';
+import MainLayout from './views/Layout/MainLayout';
 import Detail from './views/Detail';
 import Home from './views/Home';
 
