@@ -4667,6 +4667,13 @@ export type YearStats = {
   year?: Maybe<Scalars['Int']>;
 };
 
+export type AnimeDetailQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['Int']>;
+}>;
+
+
+export type AnimeDetailQuery = { __typename?: 'Query', Media?: { __typename?: 'Media', id: number, description?: string | null, status?: MediaStatus | null, format?: MediaFormat | null, season?: MediaSeason | null, seasonYear?: number | null, bannerImage?: string | null, episodes?: number | null, duration?: number | null, chapters?: number | null, type?: MediaType | null, averageScore?: number | null, title?: { __typename?: 'MediaTitle', romaji?: string | null, english?: string | null, native?: string | null } | null, startDate?: { __typename?: 'FuzzyDate', year?: number | null, month?: number | null, day?: number | null } | null, endDate?: { __typename?: 'FuzzyDate', year?: number | null, month?: number | null, day?: number | null } | null, coverImage?: { __typename?: 'MediaCoverImage', extraLarge?: string | null, large?: string | null, medium?: string | null, color?: string | null } | null } | null };
+
 export type AnimeListQueryVariables = Exact<{
   page?: InputMaybe<Scalars['Int']>;
   perPage?: InputMaybe<Scalars['Int']>;
@@ -4677,6 +4684,73 @@ export type AnimeListQueryVariables = Exact<{
 export type AnimeListQuery = { __typename?: 'Query', Page?: { __typename?: 'Page', pageInfo?: { __typename?: 'PageInfo', total?: number | null, perPage?: number | null } | null, media?: Array<{ __typename?: 'Media', id: number, idMal?: number | null, bannerImage?: string | null, status?: MediaStatus | null, title?: { __typename?: 'MediaTitle', romaji?: string | null, english?: string | null, native?: string | null, userPreferred?: string | null } | null, coverImage?: { __typename?: 'MediaCoverImage', extraLarge?: string | null, large?: string | null, medium?: string | null, color?: string | null } | null } | null> | null } | null };
 
 
+export const AnimeDetailDocument = gql`
+    query AnimeDetail($id: Int) {
+  Media(id: $id, type: ANIME) {
+    id
+    title {
+      romaji
+      english
+      native
+    }
+    description
+    status
+    format
+    startDate {
+      year
+      month
+      day
+    }
+    endDate {
+      year
+      month
+      day
+    }
+    season
+    seasonYear
+    bannerImage
+    episodes
+    duration
+    chapters
+    type
+    coverImage {
+      extraLarge
+      large
+      medium
+      color
+    }
+    averageScore
+  }
+}
+    `;
+
+/**
+ * __useAnimeDetailQuery__
+ *
+ * To run a query within a React component, call `useAnimeDetailQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAnimeDetailQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAnimeDetailQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useAnimeDetailQuery(baseOptions?: Apollo.QueryHookOptions<AnimeDetailQuery, AnimeDetailQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AnimeDetailQuery, AnimeDetailQueryVariables>(AnimeDetailDocument, options);
+      }
+export function useAnimeDetailLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AnimeDetailQuery, AnimeDetailQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AnimeDetailQuery, AnimeDetailQueryVariables>(AnimeDetailDocument, options);
+        }
+export type AnimeDetailQueryHookResult = ReturnType<typeof useAnimeDetailQuery>;
+export type AnimeDetailLazyQueryHookResult = ReturnType<typeof useAnimeDetailLazyQuery>;
+export type AnimeDetailQueryResult = Apollo.QueryResult<AnimeDetailQuery, AnimeDetailQueryVariables>;
 export const AnimeListDocument = gql`
     query AnimeList($page: Int, $perPage: Int, $search: String) {
   Page(page: $page, perPage: $perPage) {
