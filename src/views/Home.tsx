@@ -1,7 +1,6 @@
 import React from 'react'
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import tw from "twin.macro"
-import MediaList from './Components/Molecules/MediaList';
+import AnimeList from './Components/Organisims/AnimeList';
 
 const Home: React.FC = () => {
 
@@ -10,10 +9,9 @@ const Home: React.FC = () => {
     cache: new InMemoryCache(),
   })
 
-  const PrimaryButton = tw.button`bg-blue-800 text-white px-6 py-2 m-6 rounded-md hover:bg-blue-600`
   return (
     <ApolloProvider client={client}>
-      <MediaList />
+      <AnimeList />
     </ApolloProvider>
   )
 }
