@@ -9,5 +9,5 @@ export const Layout = styled.div`
 `
 
 export const Container = styled.div`
-  ${tw`max-w-6xl mx-auto min-h-screen pt-5`}
+  ${tw`max-w-6xl mx-auto min-h-screen pt-5 pb-5`}
 `

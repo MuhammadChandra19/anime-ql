@@ -4,8 +4,8 @@ export const QUERY_MEDIA_LIST = gql`
   query AnimeList($page: Int, $perPage: Int) {
     Page(page: $page, perPage: $perPage) {
       pageInfo {
-        total
-        perPage
+        currentPage
+        hasNextPage
       }
       media {
         id

@@ -4680,7 +4680,7 @@ export type AnimeListQueryVariables = Exact<{
 }>;
 
 
-export type AnimeListQuery = { __typename?: 'Query', Page?: { __typename?: 'Page', pageInfo?: { __typename?: 'PageInfo', total?: number | null, perPage?: number | null } | null, media?: Array<{ __typename?: 'Media', id: number, idMal?: number | null, bannerImage?: string | null, status?: MediaStatus | null, title?: { __typename?: 'MediaTitle', romaji?: string | null, english?: string | null, native?: string | null, userPreferred?: string | null } | null, coverImage?: { __typename?: 'MediaCoverImage', extraLarge?: string | null, large?: string | null, medium?: string | null, color?: string | null } | null } | null> | null } | null };
+export type AnimeListQuery = { __typename?: 'Query', Page?: { __typename?: 'Page', pageInfo?: { __typename?: 'PageInfo', currentPage?: number | null, hasNextPage?: boolean | null } | null, media?: Array<{ __typename?: 'Media', id: number, idMal?: number | null, bannerImage?: string | null, status?: MediaStatus | null, title?: { __typename?: 'MediaTitle', romaji?: string | null, english?: string | null, native?: string | null, userPreferred?: string | null } | null, coverImage?: { __typename?: 'MediaCoverImage', extraLarge?: string | null, large?: string | null, medium?: string | null, color?: string | null } | null } | null> | null } | null };
 
 
 export const AnimeDetailDocument = gql`
@@ -4754,8 +4754,8 @@ export const AnimeListDocument = gql`
     query AnimeList($page: Int, $perPage: Int) {
   Page(page: $page, perPage: $perPage) {
     pageInfo {
-      total
-      perPage
+      currentPage
+      hasNextPage
     }
     media {
       id
