@@ -8,6 +8,9 @@ const AnimeItem: React.FC<{anime: Partial<Media>}> = ({ anime }) => {
       <AnimeCover>
         <img alt={anime.title?.english!} src={anime.coverImage?.extraLarge!} />
       </AnimeCover>
+      <div>
+        <div>{anime.title?.english}</div>
+      </div>
     </AnimeCard>
   )
 }

@@ -1,11 +1,23 @@
+import { css } from '@emotion/react'
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import { Container } from '../styles/LayoutStyles'
+import { GlobalStyles } from 'twin.macro'
+import { Container, Layout } from '../styles/LayoutStyles'
 const MainLayout: React.FC = () => {
   return (
-    <Container>
-      <Outlet />
-    </Container>
+    <>
+      <GlobalStyles 
+        css={css`
+          body {
+            margin: 0;
+          }`}
+      />
+      <Layout>
+        <Container>
+          <Outlet />
+        </Container>
+      </Layout>
+    </>
   )
 }
 
