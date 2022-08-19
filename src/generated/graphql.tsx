@@ -4677,7 +4677,6 @@ export type AnimeDetailQuery = { __typename?: 'Query', Media?: { __typename?: 'M
 export type AnimeListQueryVariables = Exact<{
   page?: InputMaybe<Scalars['Int']>;
   perPage?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
 }>;
 
 
@@ -4752,7 +4751,7 @@ export type AnimeDetailQueryHookResult = ReturnType<typeof useAnimeDetailQuery>;
 export type AnimeDetailLazyQueryHookResult = ReturnType<typeof useAnimeDetailLazyQuery>;
 export type AnimeDetailQueryResult = Apollo.QueryResult<AnimeDetailQuery, AnimeDetailQueryVariables>;
 export const AnimeListDocument = gql`
-    query AnimeList($page: Int, $perPage: Int, $search: String) {
+    query AnimeList($page: Int, $perPage: Int) {
   Page(page: $page, perPage: $perPage) {
     pageInfo {
       total
@@ -4794,7 +4793,6 @@ export const AnimeListDocument = gql`
  *   variables: {
  *      page: // value for 'page'
  *      perPage: // value for 'perPage'
- *      search: // value for 'search'
  *   },
  * });
  */

@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_MEDIA_LIST = gql`
-  query AnimeList($page: Int, $perPage: Int, $search: String) {
+  query AnimeList($page: Int, $perPage: Int) {
     Page(page: $page, perPage: $perPage) {
       pageInfo {
         total
