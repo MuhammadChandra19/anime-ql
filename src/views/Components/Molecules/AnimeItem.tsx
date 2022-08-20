@@ -1,5 +1,5 @@
 import React from 'react'
-import { Media } from '../../../generated/graphql'
+import { AnimeList_Page_mediaTrends_media as Media } from '../../../graphql/animeList/__generated__/AnimeList'
 import { AnimeCard, AnimeCover } from '../../styles/AnimeStyles'
 
 const AnimeItem: React.FC<{anime: Partial<Media>}> = ({ anime }) => {

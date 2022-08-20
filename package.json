@@ -11,7 +11,8 @@
     "start": "webpack serve --config webpack.config.js --env env=development",
     "build": "webpack --config webpack.config.js --env env=production",
     "deploy": "gh-pages -d dist",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "codegen": "graphql-codegen --config codegen.yml",
+    "gen:types": "apollo client:codegen --target typescript --includes **/*.graphql.ts --excludes **/__generated__"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
@@ -21,8 +22,8 @@
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@types/lodash": "^4.14.182",
+    "apollo": "^2.34.0",
     "gh-pages": "^4.0.0",
-    "graphql": "^16.6.0",
     "jest": "^26.6.3",
     "lodash": "^4.17.21",
     "react": "^18.1.0",
@@ -40,11 +41,6 @@
     "@babel/preset-typescript": "^7.16.7",
     "@babel/runtime": "^7.17.9",
     "@emotion/babel-plugin-jsx-pragmatic": "^0.2.0",
-    "@graphql-codegen/cli": "2.11.6",
-    "@graphql-codegen/introspection": "2.2.1",
-    "@graphql-codegen/typescript": "2.7.3",
-    "@graphql-codegen/typescript-operations": "2.5.3",
-    "@graphql-codegen/typescript-react-apollo": "3.3.3",
     "@types/history": "^5.0.0",
     "@types/jest": "^26.0.22",
     "@types/react": "^18.0.9",

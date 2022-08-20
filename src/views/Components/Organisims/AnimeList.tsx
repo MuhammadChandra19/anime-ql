@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { useAnimeListQuery } from '../../../generated/graphql'
+import { useQuery } from '@apollo/client';
+import React, { useState } from 'react'
+import { QUERY_MEDIA_LIST } from '../../../graphql/animeList/queries.graphql';
+import { AnimeList as AnimeListType, AnimeListVariables } from '../../../graphql/animeList/__generated__/AnimeList';
 import { AnimeContainer, AnimeListItem } from '../../styles/AnimeStyles';
 import AnimeItem from '../Molecules/AnimeItem';
 import Pagination from '../Molecules/Pagination';
 
 const AnimeList:React.FC = () => {
-  const { data, loading, error, refetch } = useAnimeListQuery({variables: {page: 1, perPage: 9}})
   const [page, setPage] = useState(1)
-  const [isLoading, setLoading] = useState(false)
+  const { data, loading, error } = useQuery<AnimeListType, AnimeListVariables>(QUERY_MEDIA_LIST, { variables : { page , perPage: 18 }})
 
-  if (loading || isLoading) {
+  if (loading) {
     return <AnimeContainer>Loading...</AnimeContainer>;
   }
 
@@ -17,38 +18,19 @@ const AnimeList:React.FC = () => {
     return <AnimeContainer>ERROR</AnimeContainer>;
   }
 
-  const pageChange = async (page: number) => {
-    try {
-      setLoading(true)
-      await refetch({page, perPage: 9})
-          
-      if(data.Page?.pageInfo?.currentPage) {
-        setPage(data.Page?.pageInfo?.currentPage)
-      }
-    } catch(e) {
-      console.log(e)
-    } finally {
-      setLoading(false)
-    }
-    
-  }
-
-  // useEffect(() => {
-  //   refetch({ page, perPage: 9 })
-  // }, [page])
   return (
     <AnimeContainer>
       <AnimeListItem>
       {
-        data.Page?.media?.map(anime => {
+        data.Page?.mediaTrends?.map(anime => {
           if(anime) {
-            return (<AnimeItem key={`anime-card-${anime.id}`} anime={anime}/>)
+            return (<AnimeItem key={`anime-card-${anime.media?.id}`} anime={anime.media!}/>)
           }
         })
       }
       </AnimeListItem>
       <Pagination 
-        action={(value) => pageChange(value)}
+        action={(value) => setPage(value)}
         hasNextPage={data.Page?.pageInfo?.hasNextPage || false } 
         currentPage={page}
       />
