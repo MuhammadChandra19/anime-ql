@@ -3,7 +3,7 @@ import { css } from '@emotion/react'
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { GlobalStyles } from 'twin.macro'
-import { Container, Layout } from '../styles/LayoutStyles'
+import { Layout } from '../styles/LayoutStyles'
 const MainLayout: React.FC = () => {
   const client = new ApolloClient({
     uri: 'https://graphql.anilist.co',
@@ -18,9 +18,7 @@ const MainLayout: React.FC = () => {
           }`}
       />
       <Layout>
-        <Container>
-          <Outlet />
-        </Container>
+        <Outlet />
       </Layout>
     </ApolloProvider>
   )

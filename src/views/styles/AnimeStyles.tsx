@@ -6,8 +6,12 @@ export const AnimeListItem = styled.div`
   ${tw`
     w-full
     grid
-    grid-cols-3
+    lg:grid-cols-3
+    md:grid-cols-2
+    sm:grid-cols-1
     gap-5
+    px-1
+    md:px-2
   `}
 
   > * {
