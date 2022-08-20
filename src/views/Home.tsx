@@ -6,9 +6,11 @@ import AnimeList from './Components/Organisims/AnimeList'
 import { AnimeContainer } from './styles/AnimeStyles';
 import Pagination from './Components/Molecules/Pagination';
 import { Container } from './styles/LayoutStyles';
+import CollectionModal from './Components/Molecules/CollectionModal';
 
 const Home: React.FC = () => {
   const [page, setPage] = useState(1)
+  const [isModalVisible, setModalVisibility] = useState(false)
   const { data, loading, error } = useQuery<AnimeListType, AnimeListVariables>(QUERY_MEDIA_LIST, { variables : { page , perPage: 18 }})
 
   const animeList = data?.Page?.media as AnimeList_Page_media[]
@@ -16,13 +18,14 @@ const Home: React.FC = () => {
   return (
    <Container>
     <AnimeContainer>
-        <AnimeList animeList={animeList} error={errorFecth} isLoading={loading} />
-        <Pagination 
-          action={(value) => setPage(value)}
-          hasNextPage={data?.Page?.pageInfo?.hasNextPage || false } 
-          currentPage={page}
-        />
+      <AnimeList animeList={animeList} error={errorFecth} isLoading={loading} onClick={() => setModalVisibility(true)}/>
+      <Pagination 
+        action={(value) => setPage(value)}
+        hasNextPage={data?.Page?.pageInfo?.hasNextPage || false } 
+        currentPage={page}
+      />
     </AnimeContainer>
+    <CollectionModal isVisible={isModalVisible}/>
    </Container>
   )
 }

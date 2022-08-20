@@ -9,9 +9,10 @@ type AnimeListProps = {
   animeList: AnimeList_Page_media[]
   isLoading: boolean
   error: boolean
+  onClick: (anime: AnimeList_Page_media) => void
 }
 
-const AnimeList:React.FC<AnimeListProps> = ({ animeList, isLoading, error }) => {
+const AnimeList:React.FC<AnimeListProps> = ({ animeList, isLoading, error, onClick }) => {
   
   if (isLoading) {
     return <AnimeContainer css={css`${tw`min-h-screen w-full text-center bg-gray-400`}`}>Loading...</AnimeContainer>
@@ -28,7 +29,7 @@ const AnimeList:React.FC<AnimeListProps> = ({ animeList, isLoading, error }) => 
     {
       animeList.map((anime, idx) => {
         if(anime) {
-          return (<AnimeItem key={`anime-card-${idx}`} anime={anime!}/>)
+          return (<AnimeItem key={`anime-card-${idx}`} anime={anime!} onClick={onClick}/>)
         }
       })
     }

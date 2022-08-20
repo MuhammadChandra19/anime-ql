@@ -3,7 +3,7 @@ import tw, { css } from 'twin.macro'
 import { AnimeList_Page_media as Media } from '../../../graphql/animeList/__generated__/AnimeList'
 import { AnimeCard, AnimeCardContent, animeCardTitle, AnimeCover, AnimeCardAction } from '../../styles/AnimeStyles'
 
-const AnimeItem: React.FC<{anime: Partial<Media>}> = ({ anime }) => {
+const AnimeItem: React.FC<{anime: Media, onClick: (anime: Media) => void }> = ({ anime, onClick }) => {
   const studioName = anime.studios?.edges?.filter(studio => studio?.isMain)[0]?.node?.name
   return (
     <>
@@ -11,7 +11,7 @@ const AnimeItem: React.FC<{anime: Partial<Media>}> = ({ anime }) => {
         <AnimeCardContent>
           <AnimeCover>
             <img alt={anime.title?.english!} src={anime.coverImage?.extraLarge!} />
-            <AnimeCardAction onClick={() => console.log(anime)}>+</AnimeCardAction>
+            <AnimeCardAction data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => onClick(anime)}>+</AnimeCardAction>
           </AnimeCover>
           <div css={css`${tw`p-1 relative`}`}>
             <div css={css`${tw`flex justify-between text-sm mb-8`}`}>
@@ -32,7 +32,7 @@ const AnimeItem: React.FC<{anime: Partial<Media>}> = ({ anime }) => {
             </div>
           </div> 
         </AnimeCardContent>
-        <div css={animeCardTitle}>{anime.title?.romaji}</div>
+        <div key={`anime-title-${anime.id}`} css={animeCardTitle}>{anime.title?.romaji}</div>
       </AnimeCard>
       
     </>
