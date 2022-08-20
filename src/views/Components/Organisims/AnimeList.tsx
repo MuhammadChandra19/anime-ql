@@ -1,40 +1,34 @@
-import { useQuery } from '@apollo/client';
-import React, { useState } from 'react'
-import { QUERY_MEDIA_LIST } from '../../../graphql/animeList/queries.graphql';
-import { AnimeList as AnimeListType, AnimeListVariables } from '../../../graphql/animeList/__generated__/AnimeList';
-import { AnimeContainer, AnimeListItem } from '../../styles/AnimeStyles';
-import AnimeItem from '../Molecules/AnimeItem';
-import Pagination from '../Molecules/Pagination';
+import React from 'react'
+import { AnimeList_Page_media } from '../../../graphql/animeList/__generated__/AnimeList'
+import { AnimeContainer, AnimeListItem } from '../../styles/AnimeStyles'
+import AnimeItem from '../Molecules/AnimeItem'
 
-const AnimeList:React.FC = () => {
-  const [page, setPage] = useState(1)
-  const { data, loading, error } = useQuery<AnimeListType, AnimeListVariables>(QUERY_MEDIA_LIST, { variables : { page , perPage: 18 }})
+type AnimeListProps = {
+  animeList: AnimeList_Page_media[]
+  isLoading: boolean
+  error: boolean
+}
 
-  if (loading) {
-    return <AnimeContainer>Loading...</AnimeContainer>;
+const AnimeList:React.FC<AnimeListProps> = ({ animeList, isLoading, error }) => {
+
+  if (isLoading) {
+    return <AnimeContainer>Loading...</AnimeContainer>
   }
 
-  if (error || !data) {
-    return <AnimeContainer>ERROR</AnimeContainer>;
+  if (error) {
+    return <AnimeContainer>ERROR</AnimeContainer>
   }
 
   return (
-    <AnimeContainer>
-      <AnimeListItem>
-      {
-        data.Page?.media?.map((anime, idx) => {
-          if(anime) {
-            return (<AnimeItem key={`anime-card-${idx}`} anime={anime!}/>)
-          }
-        })
-      }
-      </AnimeListItem>
-      <Pagination 
-        action={(value) => setPage(value)}
-        hasNextPage={data.Page?.pageInfo?.hasNextPage || false } 
-        currentPage={page}
-      />
-    </AnimeContainer>
+    <AnimeListItem>
+    {
+      animeList.map((anime, idx) => {
+        if(anime) {
+          return (<AnimeItem key={`anime-card-${idx}`} anime={anime!}/>)
+        }
+      })
+    }
+    </AnimeListItem>
   )
 }
 
