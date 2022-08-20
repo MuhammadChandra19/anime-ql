@@ -115,3 +115,35 @@ export const AnimeCardAction = styled.button`
     focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-9 h-9
   `}
 `
+
+export const AnimeDetailBanner = styled.div`
+  ${tw`
+    h-[400px] w-full bg-white
+  `}
+  background-position: 50% 35%;
+  background-repeat: no-repeat;
+  background-size: cover;
+`
+
+export const AnimeDetiailHeading = styled.div`
+  ${tw`
+    w-full
+    grid
+    lg:grid-cols-5
+    md:grid-cols-3
+    sm:grid-cols-1
+    gap-5
+    px-1
+    md:px-2
+  `}
+  > * {
+    margin: 0;
+    width: 100%;
+  }
+`
+
+export const Gradient = styled.div`
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03267244397759106) 84%, rgba(151,151,151,1) 100%);
+`

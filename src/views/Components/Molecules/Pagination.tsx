@@ -1,5 +1,5 @@
 import React from 'react'
-import tw, { css } from 'twin.macro'
+import tw from 'twin.macro'
 import { disabledPrimaryButton, primaryButton } from '../../styles/components/Button'
 
 type PaginationProps = {
@@ -10,7 +10,7 @@ type PaginationProps = {
 
 const Pagination: React.FC<PaginationProps> = ({ action, currentPage, hasNextPage}) => {
   return (
-    <div css={css`${tw`flex justify-between mx-auto max-w-xs py-5`}`}>
+    <div css={tw`flex justify-between mx-auto max-w-xs py-5`}>
       <button 
         css={ currentPage === 1 ? disabledPrimaryButton : primaryButton} 
         disabled={currentPage === 1} 

@@ -15,7 +15,7 @@ type AnimeListProps = {
 const AnimeList:React.FC<AnimeListProps> = ({ animeList, isLoading, error, onClick }) => {
   
   if (isLoading) {
-    return <AnimeContainer css={css`${tw`min-h-screen w-full text-center bg-gray-400`}`}>Loading...</AnimeContainer>
+    return <AnimeContainer css={tw`min-h-screen w-full text-center bg-gray-400`}>Loading...</AnimeContainer>
         
     
   }

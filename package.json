@@ -30,7 +30,8 @@
     "react-dom": "^18.1.0",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
-    "ts-jest": "^26.5.4"
+    "ts-jest": "^26.5.4",
+    "xss": "^1.0.14"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",
