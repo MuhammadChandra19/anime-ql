@@ -6,12 +6,12 @@ import { AnimeCard, AnimeCardContent, animeCardTitle, AnimeCover, AnimeCardActio
 const AnimeItem: React.FC<{anime: Partial<Media>}> = ({ anime }) => {
   const studioName = anime.studios?.edges?.filter(studio => studio?.isMain)[0]?.node?.name
   return (
-    <div>
-      <AnimeCard>
+    <>
+      <AnimeCard key={`anime-card-${anime.id}`}>
         <AnimeCardContent>
           <AnimeCover>
             <img alt={anime.title?.english!} src={anime.coverImage?.extraLarge!} />
-            <AnimeCardAction>+</AnimeCardAction>
+            <AnimeCardAction onClick={() => console.log(anime)}>+</AnimeCardAction>
           </AnimeCover>
           <div css={css`${tw`p-1 relative`}`}>
             <div css={css`${tw`flex justify-between text-sm mb-8`}`}>
@@ -35,7 +35,7 @@ const AnimeItem: React.FC<{anime: Partial<Media>}> = ({ anime }) => {
         <div css={animeCardTitle}>{anime.title?.romaji}</div>
       </AnimeCard>
       
-    </div>
+    </>
   )
 }
 
