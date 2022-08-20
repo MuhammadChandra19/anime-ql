@@ -1,7 +1,7 @@
 import React from 'react'
 import tw, { css } from 'twin.macro'
 import { AnimeList_Page_media as Media } from '../../../graphql/animeList/__generated__/AnimeList'
-import { AnimeCard, AnimeCardContent, animeCardTitle, AnimeCover } from '../../styles/AnimeStyles'
+import { AnimeCard, AnimeCardContent, animeCardTitle, AnimeCover, AnimeCardAction } from '../../styles/AnimeStyles'
 
 const AnimeItem: React.FC<{anime: Partial<Media>}> = ({ anime }) => {
   const studioName = anime.studios?.edges?.filter(studio => studio?.isMain)[0]?.node?.name
@@ -11,6 +11,7 @@ const AnimeItem: React.FC<{anime: Partial<Media>}> = ({ anime }) => {
         <AnimeCardContent>
           <AnimeCover>
             <img alt={anime.title?.english!} src={anime.coverImage?.extraLarge!} />
+            <AnimeCardAction>+</AnimeCardAction>
           </AnimeCover>
           <div css={css`${tw`p-1 relative`}`}>
             <div css={css`${tw`flex justify-between text-sm mb-8`}`}>

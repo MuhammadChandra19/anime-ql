@@ -39,7 +39,7 @@ export const AnimeCardContent = styled.div`
     grid-cols-2
     gap-[1px]
     bg-gray-50
-    hover:shadow-xl 
+    hover:shadow-md 
     overflow-hidden
   `}
 
@@ -89,4 +89,25 @@ export const animeCardTitle = css`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+`
+
+export const AnimeCardAction = styled.button`
+  ${tw`
+    absolute
+    bottom-0
+    z-10
+    m-1
+    inline-block 
+    rounded-full 
+    bg-blue-600 
+    font-bold
+    text-white 
+    leading-normal 
+    uppercase 
+    shadow-md 
+    hover:bg-blue-700 
+    hover:shadow-lg 
+    focus:bg-blue-700 
+    focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-9 h-9
+  `}
 `
