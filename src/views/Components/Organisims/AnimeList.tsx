@@ -22,9 +22,9 @@ const AnimeList:React.FC = () => {
     <AnimeContainer>
       <AnimeListItem>
       {
-        data.Page?.mediaTrends?.map(anime => {
+        data.Page?.media?.map(anime => {
           if(anime) {
-            return (<AnimeItem key={`anime-card-${anime.media?.id}`} anime={anime.media!}/>)
+            return (<AnimeItem key={`anime-card-${anime?.id}`} anime={anime!}/>)
           }
         })
       }

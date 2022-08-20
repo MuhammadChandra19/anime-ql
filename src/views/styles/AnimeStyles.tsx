@@ -1,4 +1,4 @@
-import tw, { styled } from 'twin.macro'
+import tw, { css, styled } from 'twin.macro'
 
 export const AnimeContainer = styled.div`${tw`w-full`}`
 
@@ -20,13 +20,6 @@ export const AnimeCard = styled.div`
   ${tw`
     cursor-pointer
     no-underline
-    rounded-lg
-    w-full
-    grid
-    grid-cols-2
-    gap-1
-    bg-gray-50
-    hover:shadow-xl 
     overflow-hidden
   `}
 
@@ -34,6 +27,33 @@ export const AnimeCard = styled.div`
     margin: 0;
     width: 100%;
   }
+`
+
+export const AnimeCardContent = styled.div`
+  ${tw`
+    cursor-pointer
+    no-underline
+    rounded-lg
+    w-full
+    grid
+    grid-cols-2
+    gap-[1px]
+    bg-gray-50
+    hover:shadow-xl 
+    overflow-hidden
+  `}
+
+  > * {
+  margin: 0;
+  width: 100%;
+  }
+
+`
+
+export const AnimeCardInfo = styled.div`
+  ${tw`
+    p-2
+  `}
 `
 
 export const AnimeCover = styled.div`
@@ -53,4 +73,20 @@ export const AnimeCover = styled.div`
     `}
     margin: 0 !important;
   }
+`
+
+export const animeCardTitle = css`
+  ${tw`
+    text-gray-600
+    transition duration-150 ease-in-out
+    hover:text-yellow-900
+    overflow-hidden
+    font-medium
+  `}
+  font-size: 14px;
+  line-height: 21px;
+  margin-top: 10px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 `
