@@ -4,6 +4,10 @@ export type CollectionList = {
   [key: string]: AnimeDetail_Media[]
 }
 
+export type AnimeCollectionList = {
+  [key: string]: string[] 
+}
+
 export const addNewCollections = (name: string, anime: AnimeDetail_Media) => {
   const savedCollections = getCollections()
   const collections = { ...savedCollections,  [name]: [anime] }
@@ -16,7 +20,7 @@ export const getCollections = (): CollectionList => {
     const savedCollections = JSON.parse(storageItem)
     return savedCollections as CollectionList;
   }
-  return [] as unknown as CollectionList  
+  return {}  
 }
 
 export const getCollectionByName = (name: string): AnimeDetail_Media[] => {
@@ -37,6 +41,7 @@ export const pushNewAnimeToCollection = (name: string, anime: AnimeDetail_Media)
       ] 
     }
   saveCollection(collections)
+  saveAnimeCollectionList(anime.id.toString(), name)
 }
 
 export const updateCollectionName = (name: string, newName: string) => {
@@ -44,4 +49,29 @@ export const updateCollectionName = (name: string, newName: string) => {
   const tempCollection = savedCollections[name]
   delete savedCollections[name]
   saveCollection({ ...saveCollection, [newName]: tempCollection })
+}
+
+export const getAnimeCollectionList = (): AnimeCollectionList => {
+  const storageItem = localStorage.getItem('animeCollectionList')
+  if(storageItem) {
+    const collectionNames = JSON.parse(storageItem)
+    return collectionNames 
+  }
+  return {}
+}
+
+export const getAnimeCollectionListById = (id: number): string[] => {
+  return getAnimeCollectionList()[id.toString()]
+}
+
+export const saveAnimeCollectionList = (id: string, collectionName: string) => {
+  const savedAnimeCollectionList = getAnimeCollectionList()
+  const animeCollections = {
+    ...savedAnimeCollectionList,
+    [id]: [
+      ...(savedAnimeCollectionList[id] ? savedAnimeCollectionList[id] : [] ),
+      collectionName
+    ]
+  }
+  localStorage.setItem('animeCollectionList', JSON.stringify(animeCollections))
 }

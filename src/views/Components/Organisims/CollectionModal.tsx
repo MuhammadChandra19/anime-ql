@@ -16,8 +16,9 @@ type ModalProps = {
   isVisible: boolean
   onClose: () => void
   selectedAnime: AnimeDetail_Media
+  onSave: (collectionName: string) => void
 }
-const CollectionModal: React.FC<ModalProps> = ({ isVisible, onClose, selectedAnime }) => {
+const CollectionModal: React.FC<ModalProps> = ({ isVisible, onClose, selectedAnime, onSave }) => {
   const existingCollections = getCollections() || []
   const [collectionList, setCollectionList] = useState(existingCollections)
 
@@ -34,6 +35,7 @@ const CollectionModal: React.FC<ModalProps> = ({ isVisible, onClose, selectedAni
 
   const saveCollections = (key: string) => {
     pushNewAnimeToCollection(key,  selectedAnime)
+    onSave(key)
   }
 
   return (
@@ -52,8 +54,8 @@ const CollectionModal: React.FC<ModalProps> = ({ isVisible, onClose, selectedAni
           <ModalBody>
             <div tw="w-full">
               {
-                Object.keys(collectionList).map(value => (
-                  <div tw="flex justify-between mb-2">
+                Object.keys(collectionList).map((value, idx) => (
+                  <div tw="flex justify-between mb-2" key={`collection-${idx}`}>
                     <div tw="flex-1 block w-full mr-1 text-gray-700 font-medium text-lg">
                       <span tw="mr-2 p-1">{value}</span>
                     </div>

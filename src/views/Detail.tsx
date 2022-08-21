@@ -9,10 +9,13 @@ import { primaryButton } from './styles/components/Button'
 import { Container } from './styles/LayoutStyles'
 import xss from 'xss'
 import CollectionModal from './Components/Organisims/CollectionModal'
+import { getAnimeCollectionListById } from '../services/Collections'
 
 const Detail: React.FC = () => {
   const { id } = useParams()
+  const list = getAnimeCollectionListById(parseInt(id || '0', 10)) || []
   const [isModalVisible, toggleModal] = useState(false)
+  const [collectionList, setCollectionList] = useState(list)
   const { data, loading, error } = useQuery<AnimeDetail, AnimeDetailVariables>(QUERY_MEDIA_DETAIL, { variables: { id: parseInt(id || '', 10) }})
 
   if(loading) {
@@ -24,7 +27,11 @@ const Detail: React.FC = () => {
   }
   const hasBanner = data?.Media?.bannerImage !== null
   const bannerStyle = hasBanner ? `background-image: url("${data?.Media?.bannerImage}")` : ''
-  console.log(data)
+
+  const onSaveToCollection = (collectionName: string) => {
+    setCollectionList([ ...list, collectionName])
+    toggleModal(false)
+  }
 
   return (
     <>
@@ -56,11 +63,16 @@ const Detail: React.FC = () => {
             />
           </AnimeDetiailHeading>
         </Container>
-        <CollectionModal onClose={() => toggleModal(false)} isVisible={isModalVisible} selectedAnime={data?.Media || {} as AnimeDetail_Media}/>
+        <CollectionModal 
+          onClose={() => toggleModal(false)} 
+          isVisible={isModalVisible}
+          selectedAnime={data?.Media || {} as AnimeDetail_Media}
+          onSave={onSaveToCollection}
+        />
       </div>
       <Container tw='md:grid-cols-[210px auto] sm:grid-cols-1 gap-5 grid p-2 relative'>
         <div>
-          <div tw='w-full rounded p-2 bg-white flex sm:block flex-wrap'>
+          <div tw='w-full rounded p-2 bg-white flex sm:block flex-wrap mb-2'>
             <div tw='mb-2 mr-2'>
               <div tw='text-sm font-medium text-gray-600'>Format</div>
               <div tw='text-xs font-normal text-gray-400'>{data?.Media?.format}</div>
@@ -113,6 +125,18 @@ const Detail: React.FC = () => {
             </div>
             
           </div>
+          {
+            collectionList.length > 0 ? (
+              <div tw='w-full rounded p-2 bg-white flex sm:block flex-wrap mb-2'>
+                <div tw='text-sm font-medium text-gray-600'>Saved on</div>
+                {
+                  collectionList.map(collection => 
+                    <div tw='text-xs font-normal text-gray-400 cursor-pointer hover:text-yellow-400'>{collection}</div>
+                  )
+                }
+              </div>
+            ) : null
+          }
         </div>
         <div tw='w-full'>
           <div tw='text-center rounded bg-white p-2  mb-2'>Reviews</div>
