@@ -41,14 +41,6 @@ export enum MediaStatus {
   RELEASING = "RELEASING",
 }
 
-/**
- * Media type enum, anime or manga.
- */
-export enum MediaType {
-  ANIME = "ANIME",
-  MANGA = "MANGA",
-}
-
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

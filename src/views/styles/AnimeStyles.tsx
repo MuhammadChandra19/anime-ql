@@ -118,7 +118,7 @@ export const AnimeCardAction = styled.button`
 
 export const AnimeDetailBanner = styled.div`
   ${tw`
-    h-[400px] w-full bg-white
+    md:h-[400px] h-[200px] w-full bg-white
   `}
   background-position: 50% 35%;
   background-repeat: no-repeat;
@@ -129,8 +129,7 @@ export const AnimeDetiailHeading = styled.div`
   ${tw`
     w-full
     grid
-    lg:grid-cols-5
-    md:grid-cols-3
+    md:grid-cols-[210px auto]
     sm:grid-cols-1
     gap-5
     px-1

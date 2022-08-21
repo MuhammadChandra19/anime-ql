@@ -6,7 +6,6 @@ import AnimeList from './Components/Organisims/AnimeList'
 import { AnimeContainer } from './styles/AnimeStyles';
 import Pagination from './Components/Molecules/Pagination';
 import { Container } from './styles/LayoutStyles';
-import CollectionModal from './Components/Organisims/CollectionModal';
 
 const Home: React.FC = () => {
   const [page, setPage] = useState(1)
@@ -25,7 +24,7 @@ const Home: React.FC = () => {
         currentPage={page}
       />
     </AnimeContainer>
-    <CollectionModal isVisible={isModalVisible} onClose={() => setModalVisibility(false)}/>
+    {/* <CollectionModal isVisible={isModalVisible} onClose={() => setModalVisibility(false)}/> */}
    </Container>
   )
 }

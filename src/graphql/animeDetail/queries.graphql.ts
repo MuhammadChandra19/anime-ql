@@ -8,34 +8,51 @@ export const QUERY_MEDIA_DETAIL = gql`
         romaji
         english
         native
+        userPreferred
       }
-      description
-      status
-      format
-      startDate {
-        year
-        month
-        day
-      }
-      endDate {
-        year
-        month
-        day
-      }
-      season
-      seasonYear
       bannerImage
-      episodes
-      duration
-      chapters
-      type
+      description
       coverImage {
         extraLarge
-        large
-        medium
         color
       }
-      averageScore
+      status
+      season
+      seasonYear
+      studios {
+        edges {
+          node {
+            id
+            name
+            isAnimationStudio
+            siteUrl
+          }
+          isMain
+        }
+      }
+      genres
+      meanScore
+      episodes
+      duration
+      volumes
+      format
+      reviews {
+        edges {
+          node {
+            id
+            summary
+            score
+            user {
+              id
+              avatar {
+                large
+                medium
+              }
+            }
+            rating
+          }
+        }
+      }
     }
   }
 `;

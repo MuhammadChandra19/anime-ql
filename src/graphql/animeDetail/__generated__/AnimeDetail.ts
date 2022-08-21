@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { MediaStatus, MediaFormat, MediaSeason, MediaType } from "./../../../../__generated__/globalTypes";
+import { MediaStatus, MediaSeason, MediaFormat } from "./../../../../__generated__/globalTypes";
 
 // ====================================================
 // GraphQL query operation: AnimeDetail
@@ -23,38 +23,10 @@ export interface AnimeDetail_Media_title {
    * Official title in it's native language
    */
   native: string | null;
-}
-
-export interface AnimeDetail_Media_startDate {
-  __typename: "FuzzyDate";
   /**
-   * Numeric Year (2017)
+   * The currently authenticated users preferred title language. Default romaji for non-authenticated
    */
-  year: number | null;
-  /**
-   * Numeric Month (3)
-   */
-  month: number | null;
-  /**
-   * Numeric Day (24)
-   */
-  day: number | null;
-}
-
-export interface AnimeDetail_Media_endDate {
-  __typename: "FuzzyDate";
-  /**
-   * Numeric Year (2017)
-   */
-  year: number | null;
-  /**
-   * Numeric Month (3)
-   */
-  month: number | null;
-  /**
-   * Numeric Day (24)
-   */
-  day: number | null;
+  userPreferred: string | null;
 }
 
 export interface AnimeDetail_Media_coverImage {
@@ -64,17 +36,101 @@ export interface AnimeDetail_Media_coverImage {
    */
   extraLarge: string | null;
   /**
-   * The cover image url of the media at a large size
-   */
-  large: string | null;
-  /**
-   * The cover image url of the media at medium size
-   */
-  medium: string | null;
-  /**
    * Average #hex color of cover image
    */
   color: string | null;
+}
+
+export interface AnimeDetail_Media_studios_edges_node {
+  __typename: "Studio";
+  /**
+   * The id of the studio
+   */
+  id: number;
+  /**
+   * The name of the studio
+   */
+  name: string;
+  /**
+   * If the studio is an animation studio or a different kind of company
+   */
+  isAnimationStudio: boolean;
+  /**
+   * The url for the studio page on the AniList website
+   */
+  siteUrl: string | null;
+}
+
+export interface AnimeDetail_Media_studios_edges {
+  __typename: "StudioEdge";
+  node: AnimeDetail_Media_studios_edges_node | null;
+  /**
+   * If the studio is the main animation studio of the anime
+   */
+  isMain: boolean;
+}
+
+export interface AnimeDetail_Media_studios {
+  __typename: "StudioConnection";
+  edges: (AnimeDetail_Media_studios_edges | null)[] | null;
+}
+
+export interface AnimeDetail_Media_reviews_edges_node_user_avatar {
+  __typename: "UserAvatar";
+  /**
+   * The avatar of user at its largest size
+   */
+  large: string | null;
+  /**
+   * The avatar of user at medium size
+   */
+  medium: string | null;
+}
+
+export interface AnimeDetail_Media_reviews_edges_node_user {
+  __typename: "User";
+  /**
+   * The id of the user
+   */
+  id: number;
+  /**
+   * The user's avatar images
+   */
+  avatar: AnimeDetail_Media_reviews_edges_node_user_avatar | null;
+}
+
+export interface AnimeDetail_Media_reviews_edges_node {
+  __typename: "Review";
+  /**
+   * The id of the review
+   */
+  id: number;
+  /**
+   * A short summary of the review
+   */
+  summary: string | null;
+  /**
+   * The review score of the media
+   */
+  score: number | null;
+  /**
+   * The creator of the review
+   */
+  user: AnimeDetail_Media_reviews_edges_node_user | null;
+  /**
+   * The total user rating of the review
+   */
+  rating: number | null;
+}
+
+export interface AnimeDetail_Media_reviews_edges {
+  __typename: "ReviewEdge";
+  node: AnimeDetail_Media_reviews_edges_node | null;
+}
+
+export interface AnimeDetail_Media_reviews {
+  __typename: "ReviewConnection";
+  edges: (AnimeDetail_Media_reviews_edges | null)[] | null;
 }
 
 export interface AnimeDetail_Media {
@@ -88,25 +144,21 @@ export interface AnimeDetail_Media {
    */
   title: AnimeDetail_Media_title | null;
   /**
+   * The banner image of the media
+   */
+  bannerImage: string | null;
+  /**
    * Short description of the media's story and characters
    */
   description: string | null;
   /**
+   * The cover images of the media
+   */
+  coverImage: AnimeDetail_Media_coverImage | null;
+  /**
    * The current releasing status of the media
    */
   status: MediaStatus | null;
-  /**
-   * The format the media was released in
-   */
-  format: MediaFormat | null;
-  /**
-   * The first official release date of the media
-   */
-  startDate: AnimeDetail_Media_startDate | null;
-  /**
-   * The last official release date of the media
-   */
-  endDate: AnimeDetail_Media_endDate | null;
   /**
    * The season the media was initially released in
    */
@@ -116,9 +168,17 @@ export interface AnimeDetail_Media {
    */
   seasonYear: number | null;
   /**
-   * The banner image of the media
+   * The companies who produced the media
    */
-  bannerImage: string | null;
+  studios: AnimeDetail_Media_studios | null;
+  /**
+   * The genres of the media
+   */
+  genres: (string | null)[] | null;
+  /**
+   * Mean score of all the user's scores of the media
+   */
+  meanScore: number | null;
   /**
    * The amount of episodes the anime has when complete
    */
@@ -128,21 +188,17 @@ export interface AnimeDetail_Media {
    */
   duration: number | null;
   /**
-   * The amount of chapters the manga has when complete
+   * The amount of volumes the manga has when complete
    */
-  chapters: number | null;
+  volumes: number | null;
   /**
-   * The type of the media; anime or manga
+   * The format the media was released in
    */
-  type: MediaType | null;
+  format: MediaFormat | null;
   /**
-   * The cover images of the media
+   * User reviews of the media
    */
-  coverImage: AnimeDetail_Media_coverImage | null;
-  /**
-   * A weighted average score of all the user's scores of the media
-   */
-  averageScore: number | null;
+  reviews: AnimeDetail_Media_reviews | null;
 }
 
 export interface AnimeDetail {
