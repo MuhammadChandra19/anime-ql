@@ -1,20 +1,26 @@
 import { useQuery } from '@apollo/client'
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router'
 import tw, { css } from "twin.macro"
 import { QUERY_MEDIA_DETAIL } from '../graphql/animeDetail/queries.graphql'
-import { AnimeDetailVariables, AnimeDetail } from '../graphql/animeDetail/__generated__/AnimeDetail'
+import { AnimeDetailVariables, AnimeDetail, AnimeDetail_Media } from '../graphql/animeDetail/__generated__/AnimeDetail'
 import { AnimeDetailBanner, AnimeDetiailHeading, Gradient } from './styles/AnimeStyles'
 import { primaryButton } from './styles/components/Button'
 import { Container } from './styles/LayoutStyles'
 import xss from 'xss'
+import CollectionModal from './Components/Organisims/CollectionModal'
 
 const Detail: React.FC = () => {
   const { id } = useParams()
+  const [isModalVisible, toggleModal] = useState(false)
   const { data, loading, error } = useQuery<AnimeDetail, AnimeDetailVariables>(QUERY_MEDIA_DETAIL, { variables: { id: parseInt(id || '', 10) }})
 
   if(loading) {
     return <div>loading .....</div>
+  }
+
+  if(error) {
+    return <div>error</div>
   }
 
   const bannerStyle = data?.Media?.bannerImage ? `background-image: url("${data?.Media?.bannerImage}")` : ''
@@ -34,7 +40,7 @@ const Detail: React.FC = () => {
                 css={tw`w-full h-full object-cover`}
               />
             </div>
-            <button css={primaryButton}>Add to Collection</button>
+            <button css={primaryButton} onClick={() => toggleModal(true)}>Add to Collection</button>
           </div>
           <div 
             css={tw`w-full md:col-span-4 p-2`} 
@@ -42,6 +48,7 @@ const Detail: React.FC = () => {
           />
         </AnimeDetiailHeading>
       </Container>
+      <CollectionModal onClose={() => toggleModal(false)} isVisible={isModalVisible} selectedAnime={data?.Media || {} as AnimeDetail_Media}/>
     </div>
   )
 }

@@ -1,10 +1,10 @@
-import { AnimeList_Page_media } from '../../graphql/animeList/__generated__/AnimeList'
+import { AnimeDetail_Media } from '../../graphql/animeDetail/__generated__/AnimeDetail'
 
 export type CollectionList = {
-  [key: string]: AnimeList_Page_media[]
+  [key: string]: AnimeDetail_Media[]
 }
 
-export const addNewCollections = (name: string, anime: AnimeList_Page_media) => {
+export const addNewCollections = (name: string, anime: AnimeDetail_Media) => {
   const savedCollections = getCollections()
   const collections = { ...savedCollections,  [name]: [anime] }
   saveCollection(collections)
@@ -19,7 +19,7 @@ export const getCollections = (): CollectionList => {
   return [] as unknown as CollectionList  
 }
 
-export const getCollectionByName = (name: string): AnimeList_Page_media[] => {
+export const getCollectionByName = (name: string): AnimeDetail_Media[] => {
   return getCollections()[name]
 }
 
@@ -27,9 +27,15 @@ const saveCollection = (collection: CollectionList) => {
   localStorage.setItem('collectionList', JSON.stringify(collection))
 }
 
-export const pushNewAnimeToCollection = (name: string, anime: AnimeList_Page_media) => {
-  const savedCollections = getCollections()
-  const collections = { ...savedCollections,  [name]: [ ...savedCollections[name], anime ] }
+export const pushNewAnimeToCollection = (name: string, anime: AnimeDetail_Media) => {
+  const savedCollections = getCollections() || {}
+  const collections = { 
+    ...savedCollections,  
+    [name]: [
+       ...(savedCollections[name] ? savedCollections[name] : []),
+        anime 
+      ] 
+    }
   saveCollection(collections)
 }
 

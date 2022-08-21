@@ -2,17 +2,26 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import tw from 'twin.macro'
 import { AnimeList_Page_media as Media } from '../../../graphql/animeList/__generated__/AnimeList'
-import { AnimeCard, AnimeCardContent, animeCardTitle, AnimeCover, AnimeCardAction } from '../../styles/AnimeStyles'
+import { AnimeCard, AnimeCardContent, AnimeCover, AnimeCardAction } from '../../styles/AnimeStyles'
 
-const AnimeItem: React.FC<{anime: Media, onClick: (anime: Media) => void }> = ({ anime, onClick }) => {
+type AnimeItemProps = {
+  anime: Media, 
+  onClick?: (anime: Media) => void
+  isCollection?: boolean
+}
+
+const AnimeItem: React.FC<AnimeItemProps> = ({ anime, onClick = () => {}, isCollection = false   }) => {
   const studioName = anime.studios?.edges?.filter(studio => studio?.isMain)[0]?.node?.name
   return (
+    <div css={tw`relative`}>
+    {
+      isCollection && <AnimeCardAction data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => onClick(anime)}>+</AnimeCardAction>
+    }
     <Link to={`/detail/${anime.id}`}>
       <AnimeCard key={`anime-card-${anime.id}`}>
         <AnimeCardContent>
           <AnimeCover>
             <img alt={anime.title?.english!} src={anime.coverImage?.extraLarge!} />
-            <AnimeCardAction data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => onClick(anime)}>+</AnimeCardAction>
           </AnimeCover>
           <div css={tw`p-1 relative`}>
             <div css={tw`flex justify-between text-sm mb-8`}>
@@ -35,8 +44,8 @@ const AnimeItem: React.FC<{anime: Media, onClick: (anime: Media) => void }> = ({
         </AnimeCardContent>
         {/* <div key={`anime-title-${anime.id}`} css={animeCardTitle}>{anime.title?.romaji}</div> */}
       </AnimeCard>
-      
     </Link>
+    </div>
   )
 }
 

@@ -14,15 +14,15 @@ export const ModalContent = styled.div`${tw`
 `}`
 
 export const ModalHeader = styled.div`${tw`
-  flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t
+  flex items-start justify-between p-2 border-b border-solid border-gray-300 rounded-t
 `}`
 
 export const ModalHeaderTitle = styled.div`${tw`
-  text-3xl font-medium
+  text-base font-medium
 `}`
 
 export const ModalHeaderClose = styled.div`${tw`
-  bg-transparent border-0 text-black float-right
+  bg-transparent border-0 text-black float-right cursor-pointer
 `}
   span {
     text-black opacity-7 h-6 w-6 text-xl block bg-gray-400 py-0 rounded-full

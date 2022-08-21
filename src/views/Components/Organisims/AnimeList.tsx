@@ -21,8 +21,6 @@ const AnimeList:React.FC<AnimeListProps> = ({ animeList, isLoading, error, onCli
         }
       </AnimeListItem>
     )
-        
-    
   }
 
   if (error) {
