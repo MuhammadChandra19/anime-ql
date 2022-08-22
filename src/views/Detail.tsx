@@ -13,7 +13,7 @@ import { getAnimeCollectionListById } from '../services/Collections'
 
 const Detail: React.FC = () => {
   const { id } = useParams()
-  const list = getAnimeCollectionListById(parseInt(id || '0', 10)) || []
+  const list = getAnimeCollectionListById(parseInt(id || '0', 10))
   const [isModalVisible, toggleModal] = useState(false)
   const [collectionList, setCollectionList] = useState(list)
   const { data, loading, error } = useQuery<AnimeDetail, AnimeDetailVariables>(QUERY_MEDIA_DETAIL, { variables: { id: parseInt(id || '', 10) }})

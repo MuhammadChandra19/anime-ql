@@ -14,6 +14,12 @@ export const addNewCollections = (name: string, anime: AnimeDetail_Media) => {
   saveCollection(collections)
 }
 
+export const createNewCollections = (name: string) => {
+  const savedCollections = getCollections() || {}
+  savedCollections[name] = []
+  saveCollection(savedCollections)
+}
+
 export const getCollections = (): CollectionList => {
   const storageItem = localStorage.getItem('collectionList')
   if(storageItem) {
@@ -61,7 +67,7 @@ export const getAnimeCollectionList = (): AnimeCollectionList => {
 }
 
 export const getAnimeCollectionListById = (id: number): string[] => {
-  return getAnimeCollectionList()[id.toString()]
+  return getAnimeCollectionList()[id.toString()] || []
 }
 
 export const saveAnimeCollectionList = (id: string, collectionName: string) => {

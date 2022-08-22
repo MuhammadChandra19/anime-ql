@@ -1,8 +1,20 @@
 import React from 'react'
-import tw from 'twin.macro'
+import { Link } from 'react-router-dom'
+import { Container } from '../../styles/LayoutStyles'
 const Header: React.FC = () => {
   return (
-    <div css={tw`h-14 w-full bg-blue-500`}></div>
+    <div tw="w-full bg-blue-500">
+      <Container>
+        <div tw='flex'>
+          <Link to={"/"}>
+            <div tw='font-medium mr-8 text-gray-200 text-base'>Home</div>
+          </Link>
+          <Link to={"/collection"}>
+            <div tw='font-medium mr-2 text-gray-200 text-base'>Collection</div>
+          </Link>
+        </div>
+      </Container>
+    </div>
   )
 }
 

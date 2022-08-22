@@ -10,5 +10,5 @@ export const Layout = styled.div`
 `
 
 export const Container = styled.div`
-  ${tw`max-w-6xl mx-auto pt-5 pb-5`}
+  ${tw`max-w-6xl mx-auto pt-5 pb-5 h-full`}
 `

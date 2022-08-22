@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { AnimeDetail_Media } from '../../../graphql/animeDetail/__generated__/AnimeDetail'
-import { getCollections, pushNewAnimeToCollection } from '../../../services/Collections'
+import { createNewCollections, getCollections, pushNewAnimeToCollection } from '../../../services/Collections'
 import { primaryButton } from '../../styles/components/Button'
 import { 
   ModalBody, 
@@ -22,7 +22,7 @@ const CollectionModal: React.FC<ModalProps> = ({ isVisible, onClose, selectedAni
   const existingCollections = getCollections() || []
   const [collectionList, setCollectionList] = useState(existingCollections)
 
-  const createNewCollection = () => {
+  const pushNewCollection = () => {
     let collectionName
     let i = 0
     do {
@@ -31,6 +31,7 @@ const CollectionModal: React.FC<ModalProps> = ({ isVisible, onClose, selectedAni
       collectionName += ` ${i}`
     } while(collectionList[collectionName])
     setCollectionList({ ...collectionList, [collectionName]: [] })
+    createNewCollections(collectionName)
   }
 
   const saveCollections = (key: string) => {
@@ -70,7 +71,7 @@ const CollectionModal: React.FC<ModalProps> = ({ isVisible, onClose, selectedAni
               <button 
                 css={primaryButton} 
                 tw="w-full" 
-                onClick={() => createNewCollection()}
+                onClick={() => pushNewCollection()}
               >
                 Add new Collection
               </button>

@@ -146,3 +146,9 @@ export const Gradient = styled.div`
   width: 100%;
   background: linear-gradient(180deg, rgba(255,255,255,0.03267244397759106) 84%, rgba(151,151,151,1) 100%);
 `
+
+export const CollectionCardBanner = styled.div`
+  background-position: 50% 35%;
+  background-repeat: no-repeat;
+  background-size: cover;
+`

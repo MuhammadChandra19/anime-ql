@@ -16,6 +16,7 @@ const Home: React.FC = () => {
   const errorFecth = (error || !data) as boolean
   return (
    <Container>
+    <div tw='text-xl font-bold mb-5'>Anime List</div>
     <AnimeContainer>
       <AnimeList animeList={animeList} error={errorFecth} isLoading={loading} onClick={() => setModalVisibility(true)}/>
       <Pagination 
