@@ -20,6 +20,12 @@ export const createNewCollections = (name: string) => {
   saveCollection(savedCollections)
 }
 
+export const removeCollection = (name: string) => {
+  const savedCollections = getCollections() || {}
+  delete savedCollections[name]
+  saveCollection(savedCollections)
+} 
+
 export const getCollections = (): CollectionList => {
   const storageItem = localStorage.getItem('collectionList')
   if(storageItem) {
