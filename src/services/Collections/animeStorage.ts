@@ -41,7 +41,14 @@ export const animeStorage = () => {
     saveAnimeStorageList(animeStorageList)
   }
   
-  const deleteCollectionFromAnimeStorage = (collectionId: string) => {
+  const deleteCollectionFromAnimeStorage = (collectionId: string, animeId: string) => {
+    const savedAnimeStorageList = getAnimeStorageList()
+    const tempStorage = savedAnimeStorageList
+    delete tempStorage[animeId].collectionIds[collectionId]
+    saveAnimeStorageList(tempStorage)
+  }
+
+  const deleteCollectionFromAllAnimeStorage = (collectionId: string) => {
     const savedAnimeStorageList = getAnimeStorageList()
     const tempStorage = savedAnimeStorageList
     Object.keys(savedAnimeStorageList).forEach(key => {
@@ -55,7 +62,8 @@ export const animeStorage = () => {
   return {
     deleteCollectionFromAnimeStorage,
     addCollectionIdToAnimeStorage,
-    getAnimeStorage
+    getAnimeStorage,
+    deleteCollectionFromAllAnimeStorage
   }
 }
 

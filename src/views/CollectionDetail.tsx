@@ -43,7 +43,7 @@ const CollectionDetail: React.FC = () => {
       }
       <ModalConfirmation 
         title={`Delete ${selectedAnime.title?.romaji}`}
-        description={`Are you sure want to delete ${selectedAnime.title?.romaji} from ${id}`}
+        description={`Are you sure want to delete ${selectedAnime.title?.romaji} from ${id} ?`}
         isVisible={isDeleteConfirmationVisible}
         onCancel={() => setDeleteConfirmation(false)}
         onConfirm={removeAnimeFromCollection}
