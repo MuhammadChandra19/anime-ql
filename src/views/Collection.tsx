@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { css } from 'twin.macro'
-import { getCollections, removeCollection, updateCollectionName } from '../services/Collections'
+import { getCollectionlist, deleteCollection, updateCollectionName } from '../services/Collections'
 import EditCollectionModal from './Components/Organisims/EditCollectionModal'
 import ModalConfirmation from './Components/Organisims/ModalConfirmation'
 import { AnimeContainer, AnimeListItem, CollectionCardBanner } from './styles/AnimeStyles'
@@ -8,7 +8,7 @@ import { dangerButton, primaryButton , warningButton} from './styles/components/
 import { Container } from './styles/LayoutStyles'
 
 const Collection: React.FC = () => {
-  const savedCollectionList = getCollections()
+  const savedCollectionList = getCollectionlist()
   const [collectionList, setCollectionList] = useState(savedCollectionList)
   const [isConfirmationModalVisible, setConfirmationModal] = useState(false)
   const [selectedCollection, setSelectedCollection] = useState('')
@@ -26,7 +26,7 @@ const Collection: React.FC = () => {
     const tempCollection = collectionList
     delete tempCollection[selectedCollection]
     setCollectionList(tempCollection)
-    removeCollection(selectedCollection)
+    deleteCollection(selectedCollection)
     setConfirmationModal(false)
     setSelectedCollection('')
   }

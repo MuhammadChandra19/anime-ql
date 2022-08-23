@@ -9,13 +9,13 @@ import { primaryButton } from './styles/components/Button'
 import { Container } from './styles/LayoutStyles'
 import xss from 'xss'
 import CollectionModal from './Components/Organisims/CollectionModal'
-import { getAnimeCollectionListById } from '../services/Collections'
+import { getAnimeStorage, getCollectionNames } from '../services/Collections'
 
 const Detail: React.FC = () => {
   const { id } = useParams()
-  const list = getAnimeCollectionListById(parseInt(id || '0', 10))
+  const list = getAnimeStorage(id || '')
   const [isModalVisible, toggleModal] = useState(false)
-  const [collectionList, setCollectionList] = useState(list)
+  const [collectionList, setCollectionList] = useState(list?.collectionIds || {})
   const { data, loading, error } = useQuery<AnimeDetail, AnimeDetailVariables>(QUERY_MEDIA_DETAIL, { variables: { id: parseInt(id || '', 10) }})
 
   if(loading) {
@@ -28,8 +28,8 @@ const Detail: React.FC = () => {
   const hasBanner = data?.Media?.bannerImage !== null
   const bannerStyle = hasBanner ? `background-image: url("${data?.Media?.bannerImage}")` : ''
 
-  const onSaveToCollection = (collectionName: string) => {
-    setCollectionList([ ...list, collectionName])
+  const onSaveToCollection = (collectionId: string) => {
+    setCollectionList({ ...collectionList, [collectionId]: true })
     toggleModal(false)
   }
 
@@ -126,12 +126,12 @@ const Detail: React.FC = () => {
             
           </div>
           {
-            collectionList.length > 0 ? (
+            Object.keys(collectionList).length > 0 ? (
               <div tw='w-full rounded p-2 bg-white flex sm:block flex-wrap mb-2'>
                 <div tw='text-sm font-medium text-gray-600'>Saved on</div>
                 {
-                  collectionList.map(collection => 
-                    <div tw='text-xs font-normal text-gray-400 cursor-pointer hover:text-yellow-400'>{collection}</div>
+                  Object.keys(collectionList).map(id => 
+                    <div tw='text-xs font-normal text-gray-400 cursor-pointer hover:text-yellow-400'>{getCollectionNames()[id]}</div>
                   )
                 }
               </div>

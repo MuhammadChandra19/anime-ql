@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { AnimeDetail_Media } from '../../../graphql/animeDetail/__generated__/AnimeDetail'
-import { createNewCollections, getCollections, pushNewAnimeToCollection } from '../../../services/Collections'
+import { getCollectionlist, createCollection, addAnimeToCollection } from '../../../services/Collections'
 import { primaryButton } from '../../styles/components/Button'
 import { Modal } from '../Molecules/Modal'
 
@@ -11,7 +11,7 @@ type ModalProps = {
   onSave: (collectionName: string) => void
 }
 const CollectionModal: React.FC<ModalProps> = ({ isVisible, onClose, selectedAnime, onSave }) => {
-  const existingCollections = getCollections() || []
+  const existingCollections = getCollectionlist() || []
   const [collectionList, setCollectionList] = useState(existingCollections)
 
   const pushNewCollection = () => {
@@ -23,11 +23,11 @@ const CollectionModal: React.FC<ModalProps> = ({ isVisible, onClose, selectedAni
       collectionName += ` ${i}`
     } while(collectionList[collectionName])
     setCollectionList({ ...collectionList, [collectionName]: [] })
-    createNewCollections(collectionName)
+    createCollection(collectionName)
   }
 
   const saveCollections = (key: string) => {
-    pushNewAnimeToCollection(key,  selectedAnime)
+    addAnimeToCollection(key,  selectedAnime)
     onSave(key)
   }
 
