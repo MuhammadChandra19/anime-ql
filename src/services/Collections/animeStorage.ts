@@ -45,11 +45,8 @@ export const animeStorage = () => {
     const savedAnimeStorageList = getAnimeStorageList()
     const tempStorage = savedAnimeStorageList
     Object.keys(savedAnimeStorageList).forEach(key => {
-      console.log(key)
       const animeStorage = savedAnimeStorageList[key]
-      console.log(animeStorage)
       if(animeStorage.collectionIds[collectionId]) {
-        console.log(tempStorage[key])
         delete tempStorage[key].collectionIds[collectionId]
       }
     })

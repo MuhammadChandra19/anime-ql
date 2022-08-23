@@ -76,6 +76,18 @@ export const collection = () => {
     saveCollectionList(savedCollections)
     saveCollectionNames(savedCollectionNames)
   } 
+
+  const removeAnimeFromCollection = (name: string, id: number) => {
+    const savedCollectionList = getCollectionlist()
+    const filteredCollection = savedCollectionList[name].filter(anime => anime.id !== id) || []
+
+    const collections = {
+      ...savedCollectionList,
+      [name]: filteredCollection
+    }
+
+    saveCollectionList(collections)
+  }
   
   const saveCollectionList = (collection: CollectionList) => {
     setStorageItem('collectionList', JSON.stringify(collection))
@@ -97,7 +109,8 @@ export const collection = () => {
     createNewCollection,
     getCollectionlist,
     getCollectionNameKey,
-    getCollectionNames
+    getCollectionNames,
+    removeAnimeFromCollection
   }
 }
 

@@ -103,15 +103,15 @@ export const AnimeCardAction = styled.button`
     m-1
     inline-block 
     rounded-full 
-    bg-blue-600 
+    bg-red-600 
     font-bold
     text-white 
     leading-normal 
     uppercase 
     shadow-md 
-    hover:bg-blue-700 
+    hover:bg-red-700 
     hover:shadow-lg 
-    focus:bg-blue-700 
+    focus:bg-red-700 
     focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-9 h-9
   `}
 `

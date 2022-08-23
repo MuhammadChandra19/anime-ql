@@ -9,6 +9,7 @@ import MainLayout from './views/Layout/MainLayout';
 import Detail from './views/Detail';
 import Home from './views/Home';
 import Collection from './views/Collection';
+import CollectionDetail from './views/CollectionDetail';
 
 export const history: History = createBrowserHistory()
 
@@ -23,6 +24,7 @@ root.render(
         <Route index element={<Home />} />
         <Route path="detail/:id" element={<Detail />} />
         <Route path="collection" element={<Collection />}/>
+        <Route path='collection/:id' element={<CollectionDetail />}/>
       </Route>
     </Routes>
   </BrowserRouter>, 

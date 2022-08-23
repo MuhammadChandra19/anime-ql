@@ -10,6 +10,7 @@ import { Container } from './styles/LayoutStyles'
 import xss from 'xss'
 import CollectionModal from './Components/Organisims/CollectionModal'
 import { getAnimeStorage, getCollectionNames } from '../services/Collections'
+import { Link } from 'react-router-dom'
 
 const Detail: React.FC = () => {
   const { id } = useParams()
@@ -132,7 +133,9 @@ const Detail: React.FC = () => {
                 <div tw='text-sm font-medium text-gray-600'>Saved on</div>
                 {
                   Object.keys(collectionList).map(id => 
-                    <div tw='text-xs font-normal text-gray-400 cursor-pointer hover:text-yellow-400'>{getCollectionNames()[id]}</div>
+                    <Link to={`/collection/${getCollectionNames()[id]}`}>
+                      <div tw='text-xs font-normal text-gray-400 cursor-pointer hover:text-yellow-400'>{getCollectionNames()[id]}</div>
+                    </Link>
                   )
                 }
               </div>
