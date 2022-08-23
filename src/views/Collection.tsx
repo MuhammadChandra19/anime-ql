@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { css } from 'twin.macro'
-import { getCollectionlist, deleteCollection, updateCollectionName } from '../services/Collections'
+import { getCollectionlist, deleteCollection, updateCollectionName, createCollection } from '../services/Collections'
 import EditCollectionModal from './Components/Organisims/EditCollectionModal'
+import ModalAddNewCollection from './Components/Organisims/ModalAddNewCollection'
 import ModalConfirmation from './Components/Organisims/ModalConfirmation'
 import { AnimeContainer, AnimeListItem, CollectionCardBanner } from './styles/AnimeStyles'
 import { dangerButton, primaryButton , warningButton} from './styles/components/Button'
@@ -13,6 +14,7 @@ const Collection: React.FC = () => {
   const [isConfirmationModalVisible, setConfirmationModal] = useState(false)
   const [selectedCollection, setSelectedCollection] = useState('')
   const [isEditModalVisible, setEditModal] = useState(false)
+  const [isAddCollectionModalVisible, setAddCollectionModal] = useState(false)
 
   const getHeaderCardStyle = (name: string) => {
     const firstBanner = collectionList[name].find(anime => anime.bannerImage !== null)
@@ -41,11 +43,17 @@ const Collection: React.FC = () => {
     setSelectedCollection('')
   }
 
+  const onAddNewCollection = (collectionName: string) => {
+    createCollection(collectionName)
+    setCollectionList({ ...savedCollectionList, [collectionName]: [] })
+    setAddCollectionModal(false)
+  }
+
   return (
     <Container>
       <div tw='flex justify-between'>
         <div tw='text-xl font-bold mb-5'>Collection List</div>
-        <button css={primaryButton}>Add new collection</button>
+        <button css={primaryButton} onClick={() => setAddCollectionModal(true)}>Add new collection</button>
       </div>
       <AnimeContainer>
         <AnimeListItem>
@@ -106,6 +114,11 @@ const Collection: React.FC = () => {
         onClose={() => setEditModal(false)}
         onSave={confirmUpdateCollectionName}
         value={selectedCollection}
+      />
+      <ModalAddNewCollection 
+        isVisible={isAddCollectionModalVisible}
+        onClose={() => setAddCollectionModal(false)}
+        onSave={onAddNewCollection}
       />
     </Container>
   )

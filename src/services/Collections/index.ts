@@ -30,9 +30,14 @@ const addAnimeToCollection = (name: string, anime: AnimeDetail_Media) => {
   }
 }
 
-const deleteCollection = (collectionId: string) => {
-  removeCollection(collectionId)
-  deleteCollectionFromAnimeStorage(collectionId)
+const deleteCollection = (collectionName: string) => {
+  const key = getCollectionNameKey(collectionName)
+  console.log(key)
+  if(key) {
+    deleteCollectionFromAnimeStorage(key)
+  }
+  removeCollection(collectionName)
+  
 }
 
 export {

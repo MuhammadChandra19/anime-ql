@@ -28,8 +28,9 @@ const Detail: React.FC = () => {
   const hasBanner = data?.Media?.bannerImage !== null
   const bannerStyle = hasBanner ? `background-image: url("${data?.Media?.bannerImage}")` : ''
 
-  const onSaveToCollection = (collectionId: string) => {
-    setCollectionList({ ...collectionList, [collectionId]: true })
+  const onSaveToCollection = () => {
+    const list = getAnimeStorage(id || '')
+    setCollectionList(list.collectionIds || {})
     toggleModal(false)
   }
 
