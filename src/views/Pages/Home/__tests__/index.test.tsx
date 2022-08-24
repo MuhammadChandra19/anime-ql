@@ -3,13 +3,13 @@ import { fireEvent, render, within } from '@testing-library/react'
 import { MockedProvider } from '@apollo/client/testing'
 import { BrowserRouter } from "react-router-dom"
 import Home from '..'
-import { mockedResponse } from '../../../../../utils/mocks/anime-list-mock'
+import { mockAnimeListResponse } from '../../../../../utils/mocks/anime-list-mock'
 
-describe('Should Render AnimeList Correctly', () => {
+describe('AnimeList home page', () => {
   test('Should render anime card correctly', async () => {
     const { findByTestId, getByTestId } = render(
       <BrowserRouter>
-        <MockedProvider mocks={mockedResponse} addTypename={false}>
+        <MockedProvider mocks={mockAnimeListResponse} addTypename={false}>
           <Home />
         </MockedProvider>
       </BrowserRouter>

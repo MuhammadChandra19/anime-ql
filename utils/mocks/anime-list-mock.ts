@@ -1,7 +1,7 @@
 import { MockedResponse } from '@apollo/client/testing';
 import { QUERY_MEDIA_LIST } from '../../src/graphql/animeList/queries.graphql';
 
-export const mockedResponse: readonly MockedResponse<Record<string, any>>[] = [
+export const mockAnimeListResponse: readonly MockedResponse<Record<string, any>>[] = [
   {
     request: {
       query: QUERY_MEDIA_LIST,
