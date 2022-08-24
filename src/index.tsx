@@ -4,6 +4,7 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  HashRouter,
 } from "react-router-dom";
 import MainLayout from './views/Layout/MainLayout';
 import Detail from './views/Pages/Detail';
@@ -18,7 +19,7 @@ const root = ReactDOM.createRoot(
 )
 
 root.render(
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
       <Route element={<MainLayout />} >
         <Route index element={<Home />} />
@@ -27,5 +28,5 @@ root.render(
         <Route path='/collection/:id' element={<CollectionDetail />}/>
       </Route>
     </Routes>
-  </BrowserRouter>, 
+  </HashRouter>, 
 )
