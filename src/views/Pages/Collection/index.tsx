@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { css } from 'twin.macro'
-import { getCollectionlist, deleteCollection, updateCollectionName, createCollection } from '../services/Collections'
-import EditCollectionModal from './Components/Organisims/EditCollectionModal'
-import ModalAddNewCollection from './Components/Organisims/ModalAddNewCollection'
-import ModalConfirmation from './Components/Organisims/ModalConfirmation'
-import { AnimeContainer, AnimeListItem, CollectionCardBanner } from './styles/AnimeStyles'
-import { dangerButton, primaryButton , warningButton} from './styles/components/Button'
-import { Container } from './styles/LayoutStyles'
+import { getCollectionlist, deleteCollection, updateCollectionName, createCollection } from '../../../services/Collections'
+import EditCollectionModal from '../../Components/Organisims/EditCollectionModal'
+import ModalAddNewCollection from '../../Components/Organisims/ModalAddNewCollection'
+import ModalConfirmation from '../../Components/Organisims/ModalConfirmation'
+import { AnimeContainer, AnimeListItem, CollectionCardBanner } from '../../styles/AnimeStyles'
+import { dangerButton, primaryButton , warningButton} from '../../styles/components/Button'
+import { Container } from '../../styles/LayoutStyles'
 
 const Collection: React.FC = () => {
   const savedCollectionList = getCollectionlist()

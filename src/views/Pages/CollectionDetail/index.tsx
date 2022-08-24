@@ -1,12 +1,12 @@
 
 import React, { useState } from 'react'
 import { useParams } from 'react-router'
-import { AnimeList_Page_media } from '../graphql/animeList/__generated__/AnimeList'
-import { getCollectionlist, removeAnime } from '../services/Collections'
-import AnimeItem from './Components/Molecules/AnimeItem'
-import ModalConfirmation from './Components/Organisims/ModalConfirmation'
-import { AnimeListItem } from './styles/AnimeStyles'
-import { Container } from './styles/LayoutStyles'
+import { AnimeList_Page_media } from '../../../graphql/animeList/__generated__/AnimeList'
+import { getCollectionlist, removeAnime } from '../../../services/Collections'
+import AnimeItem from '../../Components/Molecules/AnimeItem'
+import ModalConfirmation from '../../Components/Organisims/ModalConfirmation'
+import { AnimeListItem } from '../../styles/AnimeStyles'
+import { Container } from '../../styles/LayoutStyles'
 
 const CollectionDetail: React.FC = () => {
   const { id } = useParams()

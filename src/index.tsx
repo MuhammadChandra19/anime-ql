@@ -6,10 +6,10 @@ import {
   Route,
 } from "react-router-dom";
 import MainLayout from './views/Layout/MainLayout';
-import Detail from './views/Detail';
-import Home from './views/Home';
-import Collection from './views/Collection';
-import CollectionDetail from './views/CollectionDetail';
+import Detail from './views/Pages/Detail';
+import Home from './views/Pages/Home';
+import Collection from './views/Pages/Collection';
+import CollectionDetail from './views/Pages/CollectionDetail';
 
 export const history: History = createBrowserHistory()
 
