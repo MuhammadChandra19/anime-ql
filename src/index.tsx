@@ -1,7 +1,7 @@
 import { createBrowserHistory, History } from 'history'
 import ReactDOM from "react-dom/client"
 import {
-  BrowserRouter,
+  HashRouter,
   Routes,
   Route,
 } from "react-router-dom";
@@ -18,7 +18,7 @@ const root = ReactDOM.createRoot(
 )
 
 root.render(
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
       <Route path="/" element={<MainLayout />} >
         <Route index element={<Home />} />
@@ -27,5 +27,5 @@ root.render(
         <Route path='collection/:id' element={<CollectionDetail />}/>
       </Route>
     </Routes>
-  </BrowserRouter>, 
+  </HashRouter>, 
 )
