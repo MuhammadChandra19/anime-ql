@@ -4,7 +4,6 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  HashRouter,
 } from "react-router-dom";
 import MainLayout from './views/Layout/MainLayout';
 import Detail from './views/Pages/Detail';
@@ -19,14 +18,14 @@ const root = ReactDOM.createRoot(
 )
 
 root.render(
-  <HashRouter>
+  <BrowserRouter>
     <Routes>
-      <Route element={<MainLayout />} >
+      <Route path="/" element={<MainLayout />} >
         <Route index element={<Home />} />
-        <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/collection" element={<Collection />}/>
-        <Route path='/collection/:id' element={<CollectionDetail />}/>
+        <Route path="detail/:id" element={<Detail />} />
+        <Route path="collection" element={<Collection />}/>
+        <Route path='collection/:id' element={<CollectionDetail />}/>
       </Route>
     </Routes>
-  </HashRouter>, 
+  </BrowserRouter>, 
 )
