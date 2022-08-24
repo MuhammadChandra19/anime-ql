@@ -15,6 +15,7 @@ const Pagination: React.FC<PaginationProps> = ({ action, currentPage, hasNextPag
         css={ currentPage === 1 ? disabledPrimaryButton : primaryButton} 
         disabled={currentPage === 1} 
         onClick={() => action(currentPage - 1)}
+        data-testid="prev-page-btn"
       >
         Prev Page
       </button>
@@ -22,6 +23,7 @@ const Pagination: React.FC<PaginationProps> = ({ action, currentPage, hasNextPag
         css={hasNextPage ? primaryButton : disabledPrimaryButton } 
         disabled={!hasNextPage} 
         onClick={() => action(currentPage + 1)}
+        data-testid="next-page-btn"
       >
         Next Page
       </button>

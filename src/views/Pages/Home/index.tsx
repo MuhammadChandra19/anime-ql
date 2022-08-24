@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client'
 import React, { useState } from 'react'
-import { AnimeList as AnimeListType, AnimeListVariables, AnimeList_Page_media } from '../../../graphql/animeList/__generated__/AnimeList';
+import { AnimeList as AnimeListType, AnimeListVariables, AnimeList_Page_media } from '../../../graphql/animeList/__generated__/AnimeList'
 import { QUERY_MEDIA_LIST } from '../../../graphql/animeList/queries.graphql';
 import AnimeList from '../../Components/Organisims/AnimeList'
 import { AnimeContainer } from '../../styles/AnimeStyles'

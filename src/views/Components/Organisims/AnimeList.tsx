@@ -17,7 +17,7 @@ const AnimeList:React.FC<AnimeListProps> = ({ animeList, isLoading, error, onCli
     return (
       <AnimeListItem>
         {
-          new Array(18).fill({}).map((_, idx) => <AnimeItemSkeleton id={idx}/>)
+          new Array(18).fill({}).map((_, idx) => <AnimeItemSkeleton id={idx} key={`anime-card-${idx}`} />)
         }
       </AnimeListItem>
     )
@@ -32,7 +32,7 @@ const AnimeList:React.FC<AnimeListProps> = ({ animeList, isLoading, error, onCli
     {
       animeList.map((anime, idx) => {
         if(anime) {
-          return (<AnimeItem key={`anime-card-${idx}`} anime={anime!} onClick={onClick}/>)
+          return (<AnimeItem key={`anime-card-${idx}`} anime={anime!} onClick={onClick} />)
         }
       })
     }

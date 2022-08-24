@@ -13,7 +13,7 @@ type AnimeItemProps = {
 const AnimeItem: React.FC<AnimeItemProps> = ({ anime, onClick = () => {}, isCollection = false   }) => {
   const studioName = anime.studios?.edges?.filter(studio => studio?.isMain)[0]?.node?.name
   return (
-    <div css={tw`relative`}>
+    <div css={tw`relative`} data-testid={`anime-item-${anime.id}`}>
     {
       isCollection && 
         <AnimeCardAction 
@@ -41,8 +41,8 @@ const AnimeItem: React.FC<AnimeItemProps> = ({ anime, onClick = () => {}, isColl
               <div css={tw`text-sm font-normal text-gray-500 mb-4`}>{anime.format} - {anime.episodes} episodes</div>
               <div css={tw`flex`}>
                 {
-                  anime.genres?.slice(0, 2).map(genre => 
-                    <div css={tw`text-[10px] font-normal text-gray-500 mb-4 px-2 py-1 rounded-full bg-yellow-500 text-white mx-1 mb-3`}> {genre} </div>
+                  anime.genres?.slice(0, 2).map((genre, idx) => 
+                    <div key={`genre-${idx}`} css={tw`text-[10px] font-normal text-gray-500 mb-4 px-2 py-1 rounded-full bg-yellow-500 text-white mx-1 mb-3`}> {genre} </div>
                   )
                 }
               </div>

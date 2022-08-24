@@ -2,7 +2,7 @@ import React from 'react'
 import tw, { css } from 'twin.macro'
 import { AnimeCard, AnimeCardAction, AnimeCardContent, AnimeCover } from '../../styles/AnimeStyles'
 const AnimeItemSkeleton: React.FC<{ id: number }> = ({ id }) => (
-  <AnimeCard css={css`${tw`animate-pulse`}`}>
+  <AnimeCard css={css`${tw`animate-pulse`}`} data-testid={`anime-loading-${id}`}>
     <AnimeCardContent>
       <AnimeCover>
         <AnimeCardAction css={css`${tw`bg-gray-700`}`} />

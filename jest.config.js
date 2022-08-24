@@ -8,7 +8,9 @@ module.exports = {
   // Jest transformations -- this adds support for TypeScript
   // using ts-jest
   transform: {
-    "^.+\\.tsx?$": "ts-jest"
+    // "^.+\\.tsx?$": "ts-jest",
+    '^.+\\.(js|jsx|ts|tsx|mjs)$': 'babel-jest',
+
   },
 
   // Runs special logic, such as cleaning up components
@@ -19,7 +21,7 @@ module.exports = {
     "@testing-library/jest-dom/extend-expect"
   ],
   moduleNameMapper: {
-    // "@app/(.*)": "<rootDir>/src/$1",
+    "@app/(.*)": "<rootDir>/src/$1",
     "\\.(css|less|scss)$": "identity-obj-proxy"
   },
 
@@ -29,5 +31,9 @@ module.exports = {
   testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
 
   // Module file extensions for importing
-  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"]
-};
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
+
+  snapshotSerializers: [
+    '@emotion/jest/serializer' /* if needed other snapshotSerializers should go here */
+  ]
+}
