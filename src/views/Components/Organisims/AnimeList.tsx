@@ -8,7 +8,7 @@ type AnimeListProps = {
   animeList: AnimeList_Page_media[]
   isLoading: boolean
   error: boolean
-  onClick: (anime: AnimeList_Page_media) => void
+  onClick?: (anime: AnimeList_Page_media) => void
 }
 
 const AnimeList:React.FC<AnimeListProps> = ({ animeList, isLoading, error, onClick }) => {
@@ -32,7 +32,7 @@ const AnimeList:React.FC<AnimeListProps> = ({ animeList, isLoading, error, onCli
     {
       animeList.map((anime, idx) => {
         if(anime) {
-          return (<AnimeItem key={`anime-card-${idx}`} anime={anime!} onClick={onClick} />)
+          return (<AnimeItem key={`anime-card-${idx}`} anime={anime} onClick={onClick} />)
         }
       })
     }

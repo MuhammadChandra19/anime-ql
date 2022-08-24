@@ -1,9 +1,10 @@
+import React from 'react'
 import { createBrowserHistory, History } from 'history'
 import ReactDOM from "react-dom/client"
 import {
-  HashRouter,
   Routes,
   Route,
+  HashRouter
 } from "react-router-dom";
 import MainLayout from './views/Layout/MainLayout';
 import Detail from './views/Pages/Detail';

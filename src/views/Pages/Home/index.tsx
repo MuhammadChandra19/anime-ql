@@ -9,7 +9,6 @@ import { Container } from '../../styles/LayoutStyles'
 
 const Home: React.FC = () => {
   const [page, setPage] = useState(1)
-  const [isModalVisible, setModalVisibility] = useState(false)
   const { data, loading, error } = useQuery<AnimeListType, AnimeListVariables>(QUERY_MEDIA_LIST, { variables : { page , perPage: 18 }})
 
   const animeList = data?.Page?.media as AnimeList_Page_media[]
@@ -18,7 +17,7 @@ const Home: React.FC = () => {
    <Container>
     <div tw='text-xl font-bold mb-5'>Anime List</div>
     <AnimeContainer>
-      <AnimeList animeList={animeList} error={errorFecth} isLoading={loading} onClick={() => setModalVisibility(true)}/>
+      <AnimeList animeList={animeList} error={errorFecth} isLoading={loading}/>
       <Pagination 
         action={(value) => setPage(value)}
         hasNextPage={data?.Page?.pageInfo?.hasNextPage || false } 

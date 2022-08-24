@@ -11,14 +11,14 @@ import { Container } from '../../styles/LayoutStyles'
 const CollectionDetail: React.FC = () => {
   const { id } = useParams()
   const list = getCollectionlist()
-  const [collections, setCollections] = useState(list[id!] as unknown as AnimeList_Page_media[])
+  const [collections, setCollections] = useState(list[id || ''] as unknown as AnimeList_Page_media[])
   const [selectedAnime, setSelectedAnime] = useState({} as AnimeList_Page_media)
   const [isDeleteConfirmationVisible, setDeleteConfirmation] = useState(false)
 
   const removeAnimeFromCollection = () => {
-    removeAnime(id!, selectedAnime.id)
+    removeAnime(id || '', selectedAnime.id)
     const newList = getCollectionlist()
-    setCollections(newList[id!] as unknown as AnimeList_Page_media[])
+    setCollections(newList[id || ''] as unknown as AnimeList_Page_media[])
     setDeleteConfirmation(false)
   }
 
@@ -34,7 +34,7 @@ const CollectionDetail: React.FC = () => {
           {
             collections.map((anime, idx) => {
               if(anime) {
-                return (<AnimeItem key={`anime-card-${idx}`} anime={anime!} isCollection onClick={showDeleteConfirmation}/>)
+                return (<AnimeItem key={`anime-card-${idx}`} anime={anime} isCollection onClick={showDeleteConfirmation}/>)
               }
             })
           }

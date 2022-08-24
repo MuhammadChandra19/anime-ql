@@ -60,7 +60,7 @@ const Collection: React.FC = () => {
         <AnimeListItem>
         {
           Object.keys(collectionList).map((collection, idx) => (
-            <Link to={`/collection/${collection}`}>
+            <Link to={`/collection/${collection}`} key={`collection-item-${idx}`} >
               <div 
                 key={`collection-item-${idx}`} 
                 tw="cursor-pointer no-underline rounded-lg w-full grid grid-cols-1 hover:shadow-md overflow-hidden bg-white"

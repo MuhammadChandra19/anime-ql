@@ -7,6 +7,6 @@ export const getStorageItems = <T>(storageName: string): T => {
   return null as unknown as T
 }
 
-export const setStorageItem = (name: string, item: any) => {
+export const setStorageItem = (name: string, item: string) => {
   localStorage.setItem(name, item)
 } 
