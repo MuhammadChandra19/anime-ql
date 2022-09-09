@@ -1,7 +1,6 @@
 import path from "path";
 import { Configuration } from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import { BundleAnalyzerPlugin} from "webpack-bundle-analyzer"
@@ -39,9 +38,6 @@ const config: Configuration = {
     new HtmlWebpackPlugin({
       template: "build/index.html",
     }),
-    // new ForkTsCheckerWebpackPlugin({
-    //   async: false,
-    // }),
     new ESLintPlugin({
       extensions: ["js", "jsx", "ts", "tsx"],
     }),

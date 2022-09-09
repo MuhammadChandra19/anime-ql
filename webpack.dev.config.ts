@@ -1,5 +1,4 @@
 import path from "path"
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import { Configuration as WebpackConfiguration, HotModuleReplacementPlugin } from "webpack"
 import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'
 import HtmlWebpackPlugin from "html-webpack-plugin"
