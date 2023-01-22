@@ -23,6 +23,18 @@ export enum MediaFormat {
   TV_SHORT = "TV_SHORT",
 }
 
+/**
+ * Media list watching/reading status enum.
+ */
+export enum MediaListStatus {
+  COMPLETED = "COMPLETED",
+  CURRENT = "CURRENT",
+  DROPPED = "DROPPED",
+  PAUSED = "PAUSED",
+  PLANNING = "PLANNING",
+  REPEATING = "REPEATING",
+}
+
 export enum MediaSeason {
   FALL = "FALL",
   SPRING = "SPRING",
@@ -39,6 +51,14 @@ export enum MediaStatus {
   HIATUS = "HIATUS",
   NOT_YET_RELEASED = "NOT_YET_RELEASED",
   RELEASING = "RELEASING",
+}
+
+/**
+ * Media type enum, anime or manga.
+ */
+export enum MediaType {
+  ANIME = "ANIME",
+  MANGA = "MANGA",
 }
 
 //==============================================================
