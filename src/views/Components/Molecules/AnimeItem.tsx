@@ -33,7 +33,7 @@ const AnimeItem: React.FC<AnimeItemProps> = ({ anime, onClick, isCollection = fa
           <div css={tw`p-1 relative`}>
             <div css={tw`flex justify-between text-sm mb-8`}>
               <div css={tw`text-sm text-gray-500 font-medium py-1.5`}>{anime.season} {anime.seasonYear}</div>
-              <div css={tw`text-xl text-yellow-400 font-bold`}>{anime.meanScore}</div>
+              <div css={tw`text-xl text-blue-400 font-bold`}>{anime.meanScore}</div>
             </div>
             <div css={tw`text-sm font-normal text-gray-500 mb-4`}>{anime.title?.romaji}</div>
             <div css={tw`absolute bottom-0`}>
