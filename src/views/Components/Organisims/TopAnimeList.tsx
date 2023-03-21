@@ -16,7 +16,7 @@ const TopAnimeList:  React.FC = () => {
         </div>
         <div tw='p-[8px] min-w-0 gap-2.5 grid-cols-[minmax(auto, calc(100% - 440px)) 130px 130px 150px] grid'>
           <div tw='relative'>
-            <div tw='text-gray-900 text-base font-semibold mb-[8px]'>
+            <div tw='text-blue-400 text-base font-semibold mb-[8px]'>
               {media.title?.userPreferred}
             </div>
             <div tw='flex items-center flex-wrap h-[18px] overflow-hidden ml-[-2px]'>
