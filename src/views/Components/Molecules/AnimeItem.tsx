@@ -37,7 +37,7 @@ const AnimeItem: React.FC<AnimeItemProps> = ({ anime, onClick, isCollection = fa
             </div>
             <div css={tw`text-sm font-normal text-gray-500 mb-4`}>{anime.title?.romaji}</div>
             <div css={tw`absolute bottom-0`}>
-              <div css={tw`text-sm font-medium text-pink-500 mb-4`}>{studioName}</div>
+              <div css={tw`text-sm font-medium text-pink-500 mb-4`}>Studio - {studioName}</div>
               <div css={tw`text-sm font-normal text-gray-500 mb-4`}>{anime.format} - {anime.episodes} episodes</div>
               <div css={tw`flex`}>
                 {
